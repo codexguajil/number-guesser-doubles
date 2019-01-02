@@ -1,0 +1,190 @@
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  font-family: "Open Sans", sans-serif;
+  font-size: 100%;
+}
+
+/* Mobile Design Iphone 6/7/8 */
+
+/* header elements */
+
+header {
+  height: 200px;
+  width: 100%;
+  background-color: #404042;
+  text-align: center;
+}
+
+h1 {
+  color: #DD1972;
+  font-size: 100px;
+  padding-top: 20px;
+}
+
+.sub-header {
+  color: #FFFFFF;
+  font-weight: initial;
+}
+
+/*game setup elements and scores*/
+
+.game-setup {
+  background-color: #F7F7F7;
+  height: 2300px;
+  padding-bottom: 200px;
+}
+
+.set-range, .challengers, .score-display {
+  -moz-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  -webkit-box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  background-color: #FFFFFF;
+  height: 500px;
+  width: 90%;
+  margin: auto;
+  margin-top: 30px;
+  border: 2px solid gray;
+  padding: 30px;
+}
+
+.challengers {
+  height: 1200px;
+}
+
+.input-header {
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+.input-subheader {
+  font-size: 45px;
+  font-weight: 100;
+}
+
+input {
+  border: .1px solid gray;
+  font-size: 36px;
+  height: 90px;
+  width: 98%;
+}
+
+/* buttons */
+
+.buttons {
+  margin-top: 68.5px;
+}
+
+.update-button {
+  width: 250px;
+  height: 75px;
+  border-radius: 60px;
+  margin-top: 30px;
+  color: #FFFFFF;
+  font-size: 35px;
+}
+
+.submit-button, .reset-button, .clear-button {
+  background: #D0D2D3;
+  border-radius: 60px;
+  color: #FFFFFF;
+  font-size: 30px;
+  height: 70px;
+  width: 96%;
+  margin-bottom: 30px;
+}
+
+/*result cards*/
+
+.winner-list {
+  background: #404042;
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  background: white;
+  width: 90%;
+  height: 400px;
+  margin: auto;
+  margin-bottom: 35px;
+}
+
+/*desktop 1200px*/
+
+@media only screen and (min-width: 1200px) {
+
+.game-setup {
+  width: 50%;
+  display: inline-block;
+}
+
+.set-range {
+  height: 200px;
+}
+
+.min-range,.max-range, .player-one-guess, .player-two-guess, .player-one-name, .player-two-name {
+  display: inline-flex;
+  height: 50px;
+  width: 200px;
+}
+
+.inputs {
+  display: inline-flex;
+  margin-bottom: 50px;
+}
+
+.input-header {
+  font-size: 32px;
+  font-weight: bolder;
+  display: block;
+}
+
+.input-subheader {
+  font-size: 20px;
+}
+
+.challengers {
+  height: 500px;
+}
+
+.game-setup {
+  background-color: #F7F7F7;
+  height: 100%;
+  width: 50%;
+  padding: 30px;
+}
+
+.submit-button, .reset-button, .clear-button, .update-button {
+  font-size: 16px;
+  height: 30px;
+  width: 30%;
+  /*margin-bottom: 30px;*/
+}
+
+/*result cards*/
+
+.winner-list {
+  background: #D1D2D4;
+  /*display: inline;*/
+  height: 1550px;
+  width: 45%;
+  float: right;
+}
+
+.card {
+  background: white;
+  width: 90%;
+  height: 250px;
+  margin: auto;
+  margin-bottom: 35px;
+}
+
+.names {
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-around;
+}
+
+}
