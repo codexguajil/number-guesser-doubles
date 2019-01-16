@@ -32,7 +32,7 @@ h1 {
 
 .game-setup {
   background-color: #F7F7F7;
-  height: 2300px;
+  height: 2700px;
   padding-bottom: 200px;
 }
 
@@ -70,6 +70,38 @@ input {
   width: 98%;
 }
 
+/*score display*/
+
+.latest-score {
+  text-align: left;
+  margin-bottom: 20px;
+  color: #606060;
+}
+
+.score-display {
+  height: 900px;
+  text-align: center;
+  color: gray;
+}
+
+.current-guess {
+  font-size: 28px;
+}
+
+.player-one-display-guess, .player-two-display-guess {
+  font-size: 200px;
+  font-weight: 700;
+  padding: 0;
+}
+
+.feedback-one, .feedback-two {
+  font-size: 32px;
+}
+
+.feedback-one {
+
+}
+
 /* buttons */
 
 .buttons {
@@ -98,22 +130,78 @@ input {
 /*result cards*/
 
 .winner-list {
-  background: #404042;
+  background: #D1D2D4;
   height: 100%;
   width: 100%;
 }
 
 .card {
   background: white;
+  border: 1px solid gray;
   width: 90%;
-  height: 400px;
+  height: 350px;
   margin: auto;
   margin-bottom: 35px;
+  text-align: center;
+}
+
+.player-one-display-name, .player-two-display-name {
+  font-size: 32px;
+  font-weight: 700;
+  color: grey;
+  padding: 5px;
+}
+
+.names {
+  margin: auto;
+  width: 90%;
+  border-bottom: 3px solid #E8E8E8;
+  border-bottom: 80%;
+}
+
+.winner-name {
+  color: gray;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.winner {
+  color: gray;
+  font-size: 40px;
+  margin: auto;
+  padding-top: 0;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #E8E8E8;
+  width: 90%;
+}
+
+.guesses {
+  padding-top: 15px;
+  display: inline-flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.number {
+  color: gray;
+  font-weight: 700;
+}
+
+span {
+  margin-left: 10px;
+  font-weight: 100;
+}
+
+.delete-button {
+  background: gray;
+  border-radius: 50%;
+  color: #FFFFFF;
+  width: 25px;
 }
 
 /*desktop 1200px*/
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1200px) and (max-device-width: 1823px) {
 
 .game-setup {
   width: 50%;
@@ -186,5 +274,17 @@ input {
   display: inline-flex;
   justify-content: space-around;
 }
+
+}
+
+@media only screen and (min-width: 1824px) {
+
+  .game-setup {
+    max-width: 1000px;
+  }
+
+  .card {
+    max-width: 700px;
+  }
 
 }

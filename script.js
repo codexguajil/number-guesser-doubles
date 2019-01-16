@@ -1,9 +1,37 @@
+$(document).ready(populateWinners);
 $('.update-button').on('click', setRange);
 $('.submit-button').on('click', grabInputValues);
-$('.winner-list').on('click', '.delete-button', deleteCard);
 $('.clear-button').on('click', clearInputs);
 winningNumber(1, 100);
-/*add a clear function*/
+
+function populateWinners(){
+  for (var i = 0; i < localStorage.length; i++){
+    var retrievedWinner = localStorage.getItem(localStorage.key(i));
+    var parsedWinner = JSON.parse(retrievedWinner);
+    showWinner(parsedWinner);
+  }
+}
+
+$('.winner-list').on('click', '.delete-button', function(e){
+  let storageId = $(this).parent().attr('id');
+  localStorage.removeItem(storageId);
+  $(this).parents('.card').remove();
+})
+
+var Winner = function (winner, loser, time, guesses) {
+  this.winner = winner;
+  this.loser = loser;
+  this.id = Date.now();
+  this.time = time;
+  this.guesses = guesses;
+};
+
+function storeIdea (key, winnerCards){
+  var stringifiedIdea = JSON.stringify(winnerCards);
+  localStorage.setItem(key, stringifiedIdea);
+  console.log('im working')
+}
+// ------------------------
 
 function setRange() {
   let minRange = $('.min-range').val();
@@ -35,7 +63,6 @@ function grabInputValues() {
   if (typeof startTime === 'undefined') {
     startTime = Date.now()
   }
-  // displayGuess(firstPlayer, firstGuess, secondPlayer, secondGuess);
   tellMeWinner(firstGuess, secondGuess, firstPlayer, secondPlayer, startTime);
 }
 
@@ -67,7 +94,10 @@ function tellMeWinner(firstG, secondG, pOne, pTwo, startTime) {
     feedbackOne = guessFeedback[2];
     let timeElapsed = Date.now() - startTime;
     let timeClock = Math.floor(timeElapsed/1000);
-    showWinner(pOne, pTwo, timeClock, guessCount);
+    var winnerCard = new Winner(pOne, pTwo, timeClock, guessCount);
+    showWinner(winnerCard);
+    storeIdea(winnerCard.id, winnerCard);
+    increaseRange();
   }
   if(secondG < winValue) {
     feedbackTwo = guessFeedback[0];
@@ -80,14 +110,27 @@ function tellMeWinner(firstG, secondG, pOne, pTwo, startTime) {
     let timeElapsed = Date.now() - startTime;
     let timeClock = Math.floor(timeElapsed/1000);
     showWinner(pTwo, pOne, timeClock, guessCount);
+    increaseRange();
   }
     displayGuess(pOne, firstG, pTwo, secondG, feedbackOne, feedbackTwo);
 }
 
-function showWinner(winner, loser, time, guessCount) {
-  $('.winner-list').append(`<article class="card"><article class="names"<p>${loser}</p><p>vs</p><p>${winner}</p></article><h2>${winner}</h2><h2>WINNER</2><p>guesses ${guessCount}</p><p>seconds ${time}</p><button class="delete-button">x</button></article>`)
-  console.log(winner, time);
-  increaseRange();
+function showWinner(winnerCard) {
+  console.log(winnerCard.id)
+  $('.winner-list').append(`
+    <article class="card" id=${winnerCard.id}>
+        <article class="names"> 
+          <h3 class="player-one-display-name">${winnerCard.winner}</h3>
+          <p>vs</p>
+          <h3 class="player-two-display-name">${winnerCard.loser}</h3>
+        </article>
+        <h1 class="winner-name">${winnerCard.winner}</h1><h1 class="winner">WINNER</h1>
+        <article class="guesses">
+          <p class="number">${winnerCard.guesses}<span>GUESSES</span></p> 
+          <p class="number">${winnerCard.time}<span>MINUTES</span></p>
+        </article>
+          <button class="delete-button">x</button>
+    </article>`)
 }
 
 function increaseRange() {
@@ -95,12 +138,6 @@ function increaseRange() {
   max += 10;
   winningNumber(min, max);
 }
-
-function deleteCard() {
-  var parentArticle = $(this).closest('article');
-  var id = parentArticle.prop('id');
-  parentArticle.remove();
-};
 
 function clearInputs() {
   $('.player-one-name').val("").focus();
