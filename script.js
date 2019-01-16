@@ -31,7 +31,6 @@ function storeIdea (key, winnerCards){
   localStorage.setItem(key, stringifiedIdea);
   console.log('im working')
 }
-// ------------------------
 
 function setRange() {
   let minRange = $('.min-range').val();

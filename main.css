@@ -248,14 +248,12 @@ span {
   font-size: 16px;
   height: 30px;
   width: 30%;
-  /*margin-bottom: 30px;*/
 }
 
 /*result cards*/
 
 .winner-list {
   background: #D1D2D4;
-  /*display: inline;*/
   height: 1550px;
   width: 45%;
   float: right;
